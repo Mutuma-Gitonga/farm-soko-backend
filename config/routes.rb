@@ -14,4 +14,18 @@ Rails.application.routes.draw do
    # Consumer login & logout routes
   post "/consumer_login", to: "consumer_sessions#create"
   delete "/consumer_logout", to: "consumer_sessions#destroy"
+
+
+  # PRODUCE CRUD OPERATIONS
+  # Farmer creates a product
+  post "/produce", to: "produces#create"
+  # Farmer/Consumer views all available products
+  get "/produce", to: "produces#index"
+  # Farmer/Consumer one product
+  get "/produce/:id", to: "produces#show"
+  # Farmer updates a product
+  patch "/produce/:id", to: "produces#update"
+  # Farmer destroys a product 
+  delete "/produce/:id", to: "produces#destroy"
+
 end
