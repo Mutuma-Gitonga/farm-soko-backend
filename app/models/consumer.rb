@@ -3,7 +3,7 @@ class Consumer < ApplicationRecord
   validates :name, :town, :phone, presence: true
   validates :name, length: {minimum: 5}
   validates :town, length: {minimum: 3}
-  validates :phone, length: {minimum: 12}
+  validates :phone, length: {minimum: 9}
   validates :username, length: {minimum: 5}, presence: true, uniqueness: true
 
   has_many :sale_purchases
