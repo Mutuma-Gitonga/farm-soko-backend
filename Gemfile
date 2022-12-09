@@ -6,6 +6,8 @@ ruby "2.7.4"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
 
+gem "active_model_serializers"
+
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 
 # Use postgresql as the database for Active Record
