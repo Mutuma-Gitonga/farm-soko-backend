@@ -81,8 +81,7 @@ test:
 #
 production:
   <<: *default
-  <%= ENV["DATABASE_URL"] %>
-  # database: farm_soko_backend_production
-  # username: farm_soko_backend
-  # password: 
+  database: farm_soko_backend_production
+  username: farm_soko_backend
+  password: <%= ENV["DATABASE_URL"] %>
   
