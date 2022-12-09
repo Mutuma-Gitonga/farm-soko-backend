@@ -4,6 +4,7 @@ class Produce < ApplicationRecord
 
   belongs_to :farmer 
   has_one :sale_purchase, foreign_key: :produce_id
+  belongs_to :consumer, through: :sale_purchase
   # OR SIMPLY:
   # has_one :sale_purchase
   
