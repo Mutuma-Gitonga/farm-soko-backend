@@ -14,6 +14,8 @@ require "action_view/railtie"
 # require "action_cable/engine"
 require "rails/test_unit/railtie"
 
+require 'rack/cors'
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -35,5 +37,17 @@ module FarmSokoBackend
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.middleware.use ActionDispatch::Cookies 
+    config.middleware.use ActionDispatch::Session::CookieStore
+
+    config.action_dispatch.cookies_same_site_protection = :strict
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: %i[get post put patch delete options head]
+      end
+    end
   end
 end
