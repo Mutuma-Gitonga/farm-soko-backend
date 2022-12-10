@@ -8,6 +8,10 @@ gem "rails", "~> 7.0.4"
 
 gem "active_model_serializers"
 
+gem "pry"
+
+gem 'rack-cors'
+
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 
 # Use postgresql as the database for Active Record
