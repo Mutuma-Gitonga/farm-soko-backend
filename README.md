@@ -7,18 +7,11 @@ Things you may want to cover:
 
 * Ruby version
 
-* System dependencies
+  Project employs Ruby v2.7.4
 
 * Configuration
+  Ensure to run bundle install to install all relevant gems. 
 
 * Database creation
+  Ensure to include the pg gem to support the POSTGRESQL DB used.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
