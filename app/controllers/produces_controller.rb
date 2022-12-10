@@ -1,7 +1,7 @@
 class ProducesController < ApplicationController
   wrap_parameters format: []
   before_action :authorize
-  skip_before_action :authorize, only: [:index, :show]
+  skip_before_action :authorize, only: [:index, :show, :create]
 
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response 
   rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found_response 
@@ -20,14 +20,15 @@ class ProducesController < ApplicationController
   # GET /produce
   def index 
     produces = Produce.all 
-    render json: produces, status: :ok 
+    render json: produces, only: [:id, :name, :quantity, :units, :unit_price], include: {farmer: {only: [:id, :name, :town, :phone]}}, status: :ok
+    # , include: ["Farmer", "SalePurchase"]
     # , include: {user: {only: [:username, :image_url, :bio]}}
   end
 
   # GET /produce/:id
   def show 
     produce = Produce.find(params[:id])
-    render json: produce, status: :ok
+    render json: produce, include: {farmer: {only: [:id, :name, :town, :phone]}}, status: :ok
   end
 
   # PATCH /produce/:id
@@ -55,7 +56,7 @@ class ProducesController < ApplicationController
   end
 
   def produce_params
-    params.permit(:name, :quantity, :units, :unit_price, :img_url) 
+    params.permit(:name, :quantity, :units, :unit_price, :img_url, :farmer_id) 
   end
 
   def render_unprocessable_entity_response(invalid)
